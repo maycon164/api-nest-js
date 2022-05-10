@@ -1,14 +1,13 @@
 import { Body, Controller, Get, Post, Req, Param, Put } from '@nestjs/common';
-import { Cliente } from 'src/model/cliente.model';
+import { Cliente } from 'src/cliente/schemas/cliente.schema';
 import { Request } from '@nestjs/common';
-import { ClienteService } from 'src/services/cliente.service';
+import { ClienteService } from 'src/cliente/cliente.service';
 
 @Controller('cliente')
 export class ClienteController {
   constructor(private readonly repository: ClienteService) {}
 
   @Get()
-  //@HttpCode(201)
   findAll(): Promise<Cliente[]> {
     const clientes = this.repository.getAllClientes();
     return clientes;
